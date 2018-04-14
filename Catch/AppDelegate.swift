@@ -13,21 +13,20 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    let itemStore = ItemStore.sharedInstance
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         // 1. Create the window
         // 2. Create instance of ItemVC
-        // 3. Create instance of ItemStore
-        // 4. Set ItemVC's item store property to new instance of ItemStore
-        // 5. Set window's root VC to UINavigationController
+        // 3. Set ItemVC's item store property to new instance of ItemStore
+        // 4. Set window's root VC to UINavigationController
         // 5. Set the nav controller's root VC to the item view controller
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
         let itemsController = ItemTableViewController()
-        let itemStore = ItemStore.sharedInstance
         itemsController.itemStore = itemStore
         
         window?.rootViewController = UINavigationController(rootViewController: itemsController)
@@ -46,8 +45,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        
+        let success = itemStore.saveChanges()
+        
+        if (success) {
+            print("All of the Items have been saved!")
+        }
+        else {
+            print("Could not save any of the Items :(")
+        }
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {

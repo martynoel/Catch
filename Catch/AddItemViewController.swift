@@ -168,9 +168,6 @@ class AddItemViewController: UIViewController, UITextFieldDelegate, UINavigation
         
         // Clear first responder when user presses "back"
         view.endEditing(true)
-        
-        // TODO: Get item image too
-        itemName = itemName ?? "New Item"
     }
     
     // MARK: View setup methods

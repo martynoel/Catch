@@ -10,7 +10,7 @@ import UIKit
 
 class ItemTableViewController: UITableViewController {
     
-    var itemStore: ItemStore!
+    var itemStore = ItemStore.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()

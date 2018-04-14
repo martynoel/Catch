@@ -8,13 +8,13 @@
 
 import UIKit
 
-class Item: NSObject {
+class Item: NSObject, NSCoding {
     
     var image: UIImage
     var name: String
-    let dateAddedString: String
     var dateLastWorn: Date
     var dateLastWornString: String
+    let dateAddedString: String
     
     init(called name: String, with image: UIImage) {
         
@@ -55,8 +55,6 @@ class Item: NSObject {
             // Creates random dress name from color and brand
             let randomName = "\(randomColor) \(randomBrand) dress"
             
-            //            let name = "Hello, my name is Mimi and I'm looking for a super long string of text. Haha hey."
-            
             self.init(called: randomName, with: image!)
         }
             
@@ -74,5 +72,25 @@ class Item: NSObject {
         
         self.dateLastWorn = Date()
         self.dateLastWornString = dateFormatter.string(from: dateLastWorn)
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        
+        aCoder.encode(image, forKey: "image")
+        aCoder.encode(name, forKey: "name")
+        aCoder.encode(dateLastWorn, forKey: "dateLastWorn")
+        aCoder.encode(dateLastWornString, forKey: "dateLastWornString")
+        aCoder.encode(dateAddedString, forKey: "dateAddedString")
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        
+        image = aDecoder.decodeObject(forKey: "image") as! UIImage
+        name = aDecoder.decodeObject(forKey: "name") as! String
+        dateLastWorn = aDecoder.decodeObject(forKey: "dateLastWorn") as! Date
+        dateLastWornString = aDecoder.decodeObject(forKey: "dateLastWornString") as! String
+        dateAddedString = aDecoder.decodeObject(forKey: "dateAddedString") as! String
+        
+        super.init()
     }
 }

@@ -13,9 +13,25 @@ class ItemStore {
     
     static let sharedInstance = ItemStore()
     
-    private init() {}
+    private init() {
+        
+        // Unarchive all archived Items and put them in allItems array
+        if let archivedItems = NSKeyedUnarchiver.unarchiveObject(withFile: itemArchiveURL.path) as? [Item] {
+            allItems = archivedItems
+        }
+    }
     
     var allItems = [Item]()
+    
+    // Create URL to save data to
+    let itemArchiveURL: URL = {
+        
+        // Look for URL in filesystem that matches given requirements
+        let documentsDirectories = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        var documentDirectory = documentsDirectories.first!
+        
+        return documentDirectory.appendingPathComponent("items.archive")
+    }()
     
     @discardableResult func createItem(called name: String, with image: UIImage) -> Item {
         let newItem = Item(called: name, with: image)
@@ -45,5 +61,13 @@ class ItemStore {
         // Remove and re-insert
         allItems.remove(at: oldIndex)
         allItems.insert(movedItem, at: newIndex)
+    }
+    
+    func saveChanges() -> Bool {
+        
+        print("Saving items to: \(itemArchiveURL.path)")
+        
+        // Saves all Items in allItems to the itemArchiveURL
+        return NSKeyedArchiver.archiveRootObject(allItems, toFile: itemArchiveURL.path)
     }
 }
