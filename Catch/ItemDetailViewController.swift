@@ -7,7 +7,7 @@
 //
 import UIKit
 
-class ItemDetailViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class ItemDetailViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIGestureRecognizerDelegate {
     
     // MARK: Properties
     
@@ -211,6 +211,12 @@ class ItemDetailViewController: UIViewController, UITextFieldDelegate, UINavigat
     }
     
     func setUpContentView() {
+        
+        // Adding gesture recognizer so keyboard can be dismissed with a tap
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(backgroundTapped))
+        gestureRecognizer.delegate = self
+        contentView.isUserInteractionEnabled = true
+        contentView.addGestureRecognizer(gestureRecognizer)
         
         contentView.addSubview(itemImageView)
         contentView.addSubview(nameStackView)

@@ -7,7 +7,7 @@
 //
 import UIKit
 
-class AddItemViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class AddItemViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIGestureRecognizerDelegate {
     
     // MARK: Properties
     
@@ -150,14 +150,13 @@ class AddItemViewController: UIViewController, UITextFieldDelegate, UINavigation
         
         super.viewDidLoad()
         
-        setUpNavBar()
-        
         view.backgroundColor = .white
         
         nameTextField.delegate = self
         
         view.addSubview(scrollView)
         
+        setUpNavBar()
         setUpDateInfo()
         setUpScrollView()
     }
@@ -185,6 +184,12 @@ class AddItemViewController: UIViewController, UITextFieldDelegate, UINavigation
     }
     
     func setUpContentView() {
+        
+        // Adding gesture recognizer so keyboard can be dismissed with a tap
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(backgroundTapped))
+        gestureRecognizer.delegate = self
+        contentView.isUserInteractionEnabled = true
+        contentView.addGestureRecognizer(gestureRecognizer)
         
         contentView.addSubview(itemImageView)
         contentView.addSubview(nameStackView)
@@ -310,7 +315,7 @@ class AddItemViewController: UIViewController, UITextFieldDelegate, UINavigation
     // Dismisses first responder when user taps anywhere on screen
     @objc func backgroundTapped(_ sender: UITapGestureRecognizer) {
         
-        self.view.endEditing(true)
+        self.contentView.endEditing(true)
     }
     
     @objc func changePhotoButtonPressed() {
