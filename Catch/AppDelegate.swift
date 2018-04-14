@@ -14,9 +14,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        // 1. Create the window
+        // 2. Create instance of ItemVC
+        // 3. Create instance of ItemStore
+        // 4. Set ItemVC's item store property to new instance of ItemStore
+        // 5. Set window's root VC to UINavigationController
+        // 5. Set the nav controller's root VC to the item view controller
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.makeKeyAndVisible()
+        
+        let itemsController = ItemTableViewController()
+        let itemStore = ItemStore.sharedInstance
+        itemsController.itemStore = itemStore
+        
+        window?.rootViewController = UINavigationController(rootViewController: itemsController)
+        
+        // Change nav bar title color to Catch color
+        let navigationBar = UINavigationBar.appearance()
+        navigationBar.tintColor = UIColor(red: 251/255, green: 62/255, blue: 24/255, alpha: 1)
+        navigationBar.barTintColor = .white
+        
         return true
     }
 
