@@ -15,8 +15,8 @@ class ItemDetailViewController: UIViewController, UITextFieldDelegate, UINavigat
     var item: Item!
     var itemImage: UIImage!
     var itemName: String!
-    var dateAddedString = "<DATE>"
-    var dateLastWornString = "<DATE>"
+    var dateAddedString: String!
+    var dateLastWornString: String!
     
     // Describes states of buttons so that they can change color when pressed
     // 0 = unclicked
@@ -173,7 +173,11 @@ class ItemDetailViewController: UIViewController, UITextFieldDelegate, UINavigat
         
         setUpNavBar()
         
+        // Get initial values of item so that they're not lost upon re-saving
         itemImage = item.image
+        itemName = item.name
+        dateAddedString = item.dateAddedString
+        dateLastWornString = item.dateLastWornString
         
         view.backgroundColor = .white
         
@@ -181,7 +185,6 @@ class ItemDetailViewController: UIViewController, UITextFieldDelegate, UINavigat
         
         view.addSubview(scrollView)
         
-        setUpDateInfo()
         setUpScrollView()
     }
     
@@ -373,7 +376,15 @@ class ItemDetailViewController: UIViewController, UITextFieldDelegate, UINavigat
     @objc func updateDateLastWornButtonPressed() {
         
         // Update date
-        item.updateDateLastWorn()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .short
+        dateFormatter.locale = Locale(identifier: "en_US")
+        
+        let dateLastWorn = Date()
+        
+        dateLastWornString = dateFormatter.string(from: dateLastWorn)
+        
         dateLastWornLabel.text = "Date Last Worn: \(item.dateLastWornString)"
         
         // Update visual indicators
@@ -407,16 +418,14 @@ class ItemDetailViewController: UIViewController, UITextFieldDelegate, UINavigat
         let saveAction = UIAlertAction(title: "Save", style: .default) { (saveItem) in
             
             // Saving an item
-            if self.nameTextField.text != nil {
+            if self.nameTextField.text != "" {
                 self.itemName = self.nameTextField.text
-            }
-            else {
-                self.itemName = "New Item"
             }
             self.item.name = self.itemName
             
             // Change user entered info is saved into data model
             self.item.image = self.itemImage
+            
             self.item.dateLastWornString = self.dateLastWornString
             
             self.navigationController?.popViewController(animated: true)
@@ -487,19 +496,5 @@ class ItemDetailViewController: UIViewController, UITextFieldDelegate, UINavigat
         UIGraphicsEndImageContext()
         
         return resizedImage!
-    }
-    
-    func setUpDateInfo() {
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .short
-        dateFormatter.locale = Locale(identifier: "en_US")
-        
-        let dateAdded = Date()
-        let dateLastWorn = Date()
-        
-        dateAddedString = dateFormatter.string(from: dateAdded)
-        dateLastWornString = dateFormatter.string(from: dateLastWorn)
     }
 }
