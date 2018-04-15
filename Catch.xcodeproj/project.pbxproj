@@ -50,6 +50,7 @@
 			children = (
 				39C3D4892082A5EC00C2FC12 /* Catch */,
 				39C3D4882082A5EC00C2FC12 /* Products */,
+				39C3D4A92083D27900C2FC12 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,6 +78,13 @@
 				39C3D4912082A5EC00C2FC12 /* Catch.xcdatamodeld */,
 			);
 			path = Catch;
+			sourceTree = "<group>";
+		};
+		39C3D4A92083D27900C2FC12 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -111,6 +119,11 @@
 				TargetAttributes = {
 					39C3D4862082A5EC00C2FC12 = {
 						CreatedOnToolsVersion = 9.3;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};

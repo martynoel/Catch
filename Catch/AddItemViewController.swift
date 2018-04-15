@@ -24,7 +24,7 @@ class AddItemViewController: UIViewController, UITextFieldDelegate, UINavigation
     var changePhotoButtonState = 0
     var cancelButtonState = 0
     
-    // MARK: View instantiations by closure
+    // MARK: Views
     
     let scrollView: UIScrollView = {
         
@@ -169,7 +169,7 @@ class AddItemViewController: UIViewController, UITextFieldDelegate, UINavigation
         view.endEditing(true)
     }
     
-    // MARK: View setup methods
+    // MARK: View setup 
     
     func setUpScrollView() {
         
@@ -270,7 +270,7 @@ class AddItemViewController: UIViewController, UITextFieldDelegate, UINavigation
         cancelButton.topAnchor.constraint(equalTo: changePhotoButton.bottomAnchor, constant: 5).isActive = true
     }
     
-    // MARK: Action methods
+    // MARK: Selectors
     
     @objc func addPhotoButtonPressed() {
         let alertController = UIAlertController(title: "Choose Photo Source", message: nil, preferredStyle: .actionSheet)

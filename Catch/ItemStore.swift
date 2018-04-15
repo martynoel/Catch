@@ -8,19 +8,12 @@
 
 import UIKit
 
-// Database for items
+// Singleton database for items
 class ItemStore {
     
+    // MARK: Properties
+    
     static let sharedInstance = ItemStore()
-    
-    private init() {
-        
-        // Unarchive all archived Items and put them in allItems array
-        if let archivedItems = NSKeyedUnarchiver.unarchiveObject(withFile: itemArchiveURL.path) as? [Item] {
-            allItems = archivedItems
-        }
-    }
-    
     var allItems = [Item]()
     
     // Create URL to save data to
@@ -32,6 +25,18 @@ class ItemStore {
         
         return documentDirectory.appendingPathComponent("items.archive")
     }()
+    
+    // MARK: Initialization
+    
+    private init() {
+        
+        // Unarchive all archived Items and put them in allItems array
+        if let archivedItems = NSKeyedUnarchiver.unarchiveObject(withFile: itemArchiveURL.path) as? [Item] {
+            allItems = archivedItems
+        }
+    }
+    
+    // MARK: Methods
     
     @discardableResult func createItem(called name: String, with image: UIImage) -> Item {
         let newItem = Item(called: name, with: image)

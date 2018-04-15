@@ -10,11 +10,15 @@ import UIKit
 
 class Item: NSObject, NSCoding {
     
+    // MARK: Properties
+    
     var image: UIImage
     var name: String
     var dateLastWorn: Date
     var dateLastWornString: String
     let dateAddedString: String
+    
+    // MARK: Initialization
     
     init(called name: String, with image: UIImage) {
         
@@ -63,6 +67,8 @@ class Item: NSObject, NSCoding {
         }
     }
     
+    // MARK: Methods
+    
     func updateDateLastWorn() {
         
         let dateFormatter = DateFormatter()
@@ -73,6 +79,8 @@ class Item: NSObject, NSCoding {
         self.dateLastWorn = Date()
         self.dateLastWornString = dateFormatter.string(from: dateLastWorn)
     }
+    
+    // MARK: NSCoding methods
     
     func encode(with aCoder: NSCoder) {
         

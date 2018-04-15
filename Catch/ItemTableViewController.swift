@@ -10,7 +10,11 @@ import UIKit
 
 class ItemTableViewController: UITableViewController {
     
+    // MARK: Properties
+    
     var itemStore = ItemStore.sharedInstance
+    
+    // MARK: View lifecycle methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +30,8 @@ class ItemTableViewController: UITableViewController {
         tableView.reloadData()
     }
     
+    // MARK: View setup
+    
     func setUpNavBar() {
         self.navigationItem.title = "My Items"
         
@@ -36,6 +42,8 @@ class ItemTableViewController: UITableViewController {
         let addItemButton = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addItem))
         self.navigationItem.rightBarButtonItem = addItemButton
     }
+    
+    // MARK: Selectors
     
     @objc func addRandomItem(_ sender: UIBarButtonItem) {
         

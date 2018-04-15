@@ -10,10 +10,14 @@ import UIKit
 
 class ItemCell: UITableViewCell {
     
+    // MARK: Properties
+    
     var itemImage: UIImage!
     var itemImageView: UIImageView!
     var itemNameLabel: UILabel!
     var dateLastWornLabel: UILabel!
+    
+    // MARK: Initialization
     
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:)")
@@ -24,6 +28,8 @@ class ItemCell: UITableViewCell {
         
         setUpViews()
     }
+    
+    // MARK: View setup
     
     func setUpViews() {
         

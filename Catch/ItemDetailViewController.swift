@@ -25,7 +25,7 @@ class ItemDetailViewController: UIViewController, UITextFieldDelegate, UINavigat
     var cancelButtonState = 0
     var updateDateLastWornButtonState = 0
     
-    // MARK: View instantiations by closure
+    // MARK: Views
     
     let scrollView: UIScrollView = {
         
@@ -199,7 +199,7 @@ class ItemDetailViewController: UIViewController, UITextFieldDelegate, UINavigat
         itemName = itemName ?? "New Item"
     }
     
-    // MARK: View setup methods
+    // MARK: View setup
     
     func setUpScrollView() {
         
@@ -315,7 +315,7 @@ class ItemDetailViewController: UIViewController, UITextFieldDelegate, UINavigat
         cancelButton.topAnchor.constraint(equalTo: updateDateLastWornButton.bottomAnchor, constant: 5).isActive = true
     }
     
-    // MARK: Action methods
+    // MARK: Selectors
     
     @objc func changePhotoButtonPressed() {
         
