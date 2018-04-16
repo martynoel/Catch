@@ -13,7 +13,6 @@ class ItemModel {
     
     // MARK: Properties
     
-    static let sharedInstance = ItemModel()
     var allItems = [Item]()
     
     // Create URL to save data to
@@ -28,7 +27,7 @@ class ItemModel {
     
     // MARK: Initialization
     
-    private init() {
+    init() {
         
         // Unarchive all archived Items and put them in allItems array
         if let archivedItems = NSKeyedUnarchiver.unarchiveObject(withFile: itemArchiveURL.path) as? [Item] {

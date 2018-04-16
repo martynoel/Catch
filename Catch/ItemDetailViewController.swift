@@ -11,7 +11,6 @@ class ItemDetailViewController: UIViewController, UITextFieldDelegate, UINavigat
     
     // MARK: Properties
     
-    let itemModel = ItemModel.sharedInstance
     var item: Item!
     var itemImage: UIImage!
     var itemName: String!

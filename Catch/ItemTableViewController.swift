@@ -12,7 +12,7 @@ class ItemTableViewController: UITableViewController {
     
     // MARK: Properties
     
-    var itemModel = ItemModel.sharedInstance
+    var itemModel: ItemModel! // set in App Delegate
     
     // MARK: View lifecycle methods
     
@@ -60,7 +60,10 @@ class ItemTableViewController: UITableViewController {
     }
     
     @objc func addItem(_ sender: UIBarButtonItem) {
-        self.navigationController?.pushViewController(AddItemViewController(), animated: true)
+        
+        let destination = AddItemViewController()
+        destination.itemModel = itemModel // getting the item model and give it to AddItemVC. Dependency injection woohoo!
+        self.navigationController?.pushViewController(destination, animated: true)
     }
     
     // MARK: Table view delegate methods
@@ -80,7 +83,7 @@ class ItemTableViewController: UITableViewController {
             let item = itemModel.allItems[row]
             
             let destination = ItemDetailViewController()
-            destination.item = item // getting the item and give it to ItemDetailVC
+            destination.item = item // getting the item and give it to ItemDetailVC. Dependency injection woohoo!
             self.navigationController?.pushViewController(destination, animated: true)
         }
     }
