@@ -70,23 +70,6 @@ class ItemTableViewController: UITableViewController {
         return itemStore.allItems.count
     }
     
-    // "What should I display in this row?"
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        // Reusing cells to save memz: GOTTA REGISTER TABLE VIEW TYPE (inc. custom classes) FIRST
-        self.tableView.register(ItemCell.self, forCellReuseIdentifier: "ItemCell")
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemCell
-        
-        let item = itemStore.allItems[indexPath.row]
-        
-        cell.itemImageView.image = item.image
-        cell.itemNameLabel?.text = item.name
-        cell.dateLastWornLabel?.text = "Last worn: \(item.dateLastWornString)"
-        cell.dateLastWornLabel?.textColor = UIColor.darkGray
-        
-        return cell
-    }
-    
     // Select an item row
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -103,6 +86,23 @@ class ItemTableViewController: UITableViewController {
     }
     
     // MARK: Table View data source methods
+    
+    // "What should I display in this row?"
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        // Reusing cells to save memz: GOTTA REGISTER TABLE VIEW TYPE (inc. custom classes) FIRST
+        self.tableView.register(ItemCell.self, forCellReuseIdentifier: "ItemCell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemCell
+        
+        let item = itemStore.allItems[indexPath.row]
+        
+        cell.itemImageView.image = item.image
+        cell.itemNameLabel?.text = item.name
+        cell.dateLastWornLabel?.text = "Last worn: \(item.dateLastWornString)"
+        cell.dateLastWornLabel?.textColor = UIColor.darkGray
+        
+        return cell
+    }
     
     // Asks data source to commit to insertion/deletion
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
