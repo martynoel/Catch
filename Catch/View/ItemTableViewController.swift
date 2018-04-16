@@ -25,6 +25,7 @@ class ItemTableViewController: UITableViewController {
         
         setUpNavBar()
         
+        // Set up data source and delegate in separate classes
         if let itemModelController = itemModelController {
             
             itemTableViewDataSource = ItemTableViewDataSource(tableView: tableView, itemModelController: itemModelController)

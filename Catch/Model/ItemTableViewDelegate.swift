@@ -10,8 +10,12 @@ import UIKit
 
 class ItemTableViewDelegate: NSObject {
     
+    // MARK: Properties
+    
     let itemModelController: ItemModelController
     let navigationController: UINavigationController
+    
+    // MARK: Initialization
     
     init(tableView: UITableView, itemModelController: ItemModelController, navigationController: UINavigationController) {
         

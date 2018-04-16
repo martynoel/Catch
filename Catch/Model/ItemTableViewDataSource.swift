@@ -10,7 +10,11 @@ import UIKit
 
 class ItemTableViewDataSource: NSObject {
     
+    // MARK: Properties
+    
     let itemModelController: ItemModelController
+    
+    // MARK: Initialization
     
     init(tableView: UITableView, itemModelController: ItemModelController) {
         
