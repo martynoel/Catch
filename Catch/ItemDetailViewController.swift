@@ -14,8 +14,8 @@ class ItemDetailViewController: UIViewController, UITextFieldDelegate, UINavigat
     var item: Item!
     var itemImage: UIImage!
     var itemName: String!
-    var dateAddedString: String!
-    var dateLastWornString: String!
+    var dateAddedString = ""
+    var dateLastWornString = ""
     
     // Describes states of buttons so that they can change color when pressed
     // 0 = unclicked

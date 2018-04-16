@@ -15,8 +15,8 @@ class AddItemViewController: UIViewController, UITextFieldDelegate, UINavigation
     var item: Item!
     var itemImage = UIImage(named: "catchLogo")
     var itemName = "New Item"
-    var dateAddedString = "<DATE>"
-    var dateLastWornString = "<DATE>"
+    var dateAddedString = ""
+    var dateLastWornString = ""
     
     // Describes states of buttons so that they can change color when pressed
     // 0 = unclicked
