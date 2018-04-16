@@ -1,5 +1,5 @@
 //
-//  ItemStore.swift
+//  ItemModel.swift
 //  Catch
 //
 //  Created by Mimi Chenyao on 4/12/18.
@@ -9,11 +9,11 @@
 import UIKit
 
 // Singleton database for items
-class ItemStore {
+class ItemModel {
     
     // MARK: Properties
     
-    static let sharedInstance = ItemStore()
+    static let sharedInstance = ItemModel()
     var allItems = [Item]()
     
     // Create URL to save data to

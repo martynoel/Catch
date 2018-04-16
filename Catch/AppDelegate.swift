@@ -13,13 +13,13 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    let itemStore = ItemStore.sharedInstance
+    let itemModel = ItemModel.sharedInstance
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         // 1. Create the window
         // 2. Create instance of ItemVC
-        // 3. Set ItemVC's item store property to new instance of ItemStore
+        // 3. Set ItemVC's item store property to new instance of ItemModel
         // 4. Set window's root VC to UINavigationController
         // 5. Set the nav controller's root VC to the item view controller
         
@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         let itemsController = ItemTableViewController()
-        itemsController.itemStore = itemStore
+        itemsController.itemModel = itemModel
         
         window?.rootViewController = UINavigationController(rootViewController: itemsController)
         
@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidEnterBackground(_ application: UIApplication) {
         
-        let success = itemStore.saveChanges()
+        let success = itemModel.saveChanges()
         
         if (success) {
             print("All of the Items have been saved!")

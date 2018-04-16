@@ -12,7 +12,7 @@ class ItemTableViewController: UITableViewController {
     
     // MARK: Properties
     
-    var itemStore = ItemStore.sharedInstance
+    var itemModel = ItemModel.sharedInstance
     
     // MARK: View lifecycle methods
     
@@ -48,10 +48,10 @@ class ItemTableViewController: UITableViewController {
     @objc func addRandomItem(_ sender: UIBarButtonItem) {
         
         // Create a new item and add it to the store first
-        let newItem = itemStore.createItem(called: "New Item", with: UIImage(named: "fadedCatchLogo_frame")!)
+        let newItem = itemModel.createItem(called: "New Item", with: UIImage(named: "fadedCatchLogo_frame")!)
         
         // Figure out where that new item is in the store's array of items
-        if let index = itemStore.allItems.index(of: newItem) {
+        if let index = itemModel.allItems.index(of: newItem) {
             let indexPath = IndexPath(row: index, section: 0)
             
             // And then insert this new item into the table
@@ -67,7 +67,7 @@ class ItemTableViewController: UITableViewController {
     
     // "How many rows should I display in this section?"
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return itemStore.allItems.count
+        return itemModel.allItems.count
     }
     
     // Select an item row
@@ -77,7 +77,7 @@ class ItemTableViewController: UITableViewController {
         if let row = tableView.indexPathForSelectedRow?.row {
             
             // Get item associated with this row and pass it along
-            let item = itemStore.allItems[row]
+            let item = itemModel.allItems[row]
             
             let destination = ItemDetailViewController()
             destination.item = item // getting the item and give it to ItemDetailVC
@@ -94,7 +94,7 @@ class ItemTableViewController: UITableViewController {
         self.tableView.register(ItemCell.self, forCellReuseIdentifier: "ItemCell")
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemCell
         
-        let item = itemStore.allItems[indexPath.row]
+        let item = itemModel.allItems[indexPath.row]
         
         cell.itemImageView.image = item.image
         cell.itemNameLabel?.text = item.name
@@ -109,8 +109,8 @@ class ItemTableViewController: UITableViewController {
         
         // If table view asks to commit a delete command, find and remove the item from the data store, and remove the row from the table with an animation
         if editingStyle == .delete {
-            let item = itemStore.allItems[indexPath.row]
-            itemStore.removeItem(item)
+            let item = itemModel.allItems[indexPath.row]
+            itemModel.removeItem(item)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }
@@ -118,6 +118,6 @@ class ItemTableViewController: UITableViewController {
     // Table view moves a row and reports it to its data source.
     // Works with moveItem() in item store backend
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        itemStore.moveItem(from: sourceIndexPath.row, to: destinationIndexPath.row)
+        itemModel.moveItem(from: sourceIndexPath.row, to: destinationIndexPath.row)
     }
 }
