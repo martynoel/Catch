@@ -13,7 +13,7 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    let itemModel = ItemModelController()
+    let itemModelController = ItemModelController()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         let itemsController = ItemTableViewController()
-        itemsController.itemModel = itemModel
+        itemsController.itemModelController = itemModelController
         
         window?.rootViewController = UINavigationController(rootViewController: itemsController)
         
@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidEnterBackground(_ application: UIApplication) {
         
-        let success = itemModel.saveChanges()
+        let success = itemModelController.saveChanges()
         
         if (success) {
             print("All of the Items have been saved!")

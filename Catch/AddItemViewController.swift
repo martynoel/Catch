@@ -11,7 +11,7 @@ class AddItemViewController: UIViewController, UITextFieldDelegate, UINavigation
     
     // MARK: Properties
     
-    var itemModel: ItemModelController!
+    var itemModelController: ItemModelController!
     var item: Item!
     var itemImage = UIImage(named: "catchLogo")
     var itemName = "New Item"
@@ -360,7 +360,7 @@ class AddItemViewController: UIViewController, UITextFieldDelegate, UINavigation
             }
             
             // Save user-entered info into data model
-            self.item = self.itemModel.createItem(called: self.itemName, with: self.itemImage!)
+            self.item = self.itemModelController.createItem(called: self.itemName, with: self.itemImage!)
             
             self.navigationController?.popViewController(animated: true)
         }
