@@ -13,13 +13,13 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    let itemModel = ItemModel()
+    let itemModel = ItemModelController()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         // 1. Create the window
         // 2. Create instance of ItemVC
-        // 3. Set ItemVC's item store property to new instance of ItemModel
+        // 3. Set ItemVC's item store property to new instance of ItemModelController
         // 4. Set window's root VC to UINavigationController
         // 5. Set the nav controller's root VC to the item view controller
         
@@ -42,6 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+        self.saveContext()
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {

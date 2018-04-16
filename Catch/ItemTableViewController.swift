@@ -12,7 +12,7 @@ class ItemTableViewController: UITableViewController {
     
     // MARK: Properties
     
-    var itemModel: ItemModel! // set in App Delegate
+    var itemModel: ItemModelController! // set in App Delegate
     
     // MARK: View lifecycle methods
     

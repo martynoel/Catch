@@ -1,5 +1,5 @@
 //
-//  ItemModel.swift
+//  ItemModelController.swift
 //  Catch
 //
 //  Created by Mimi Chenyao on 4/12/18.
@@ -9,7 +9,7 @@
 import UIKit
 
 // Singleton database for items
-class ItemModel {
+class ItemModelController {
     
     // MARK: Properties
     

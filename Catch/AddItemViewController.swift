@@ -11,7 +11,7 @@ class AddItemViewController: UIViewController, UITextFieldDelegate, UINavigation
     
     // MARK: Properties
     
-    var itemModel: ItemModel!
+    var itemModel: ItemModelController!
     var item: Item!
     var itemImage = UIImage(named: "catchLogo")
     var itemName = "New Item"
