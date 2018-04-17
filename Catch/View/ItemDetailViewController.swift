@@ -384,7 +384,7 @@ class ItemDetailViewController: UIViewController, UITextFieldDelegate, UINavigat
         
         dateLastWornString = dateFormatter.string(from: dateLastWorn)
         
-        dateLastWornLabel.text = "Date Last Worn: \(item.dateLastWornString)"
+        dateLastWornLabel.text = "Date Last Worn: \(dateLastWornString)"
         
         // Update visual indicators
         if updateDateLastWornButtonState == 0 {
