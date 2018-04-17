@@ -54,8 +54,6 @@
 			children = (
 				39C3D4A12082A96800C2FC12 /* Item.swift */,
 				39C3D4A32082A97500C2FC12 /* ItemModelController.swift */,
-				395C68FE2085583D000784BB /* ItemTableViewDataSource.swift */,
-				395C690020855A46000784BB /* ItemTableViewDelegate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -64,6 +62,8 @@
 			isa = PBXGroup;
 			children = (
 				39C3D49F2082A95B00C2FC12 /* ItemCell.swift */,
+				395C68FE2085583D000784BB /* ItemTableViewDataSource.swift */,
+				395C690020855A46000784BB /* ItemTableViewDelegate.swift */,
 				39C3D48C2082A5EC00C2FC12 /* ItemTableViewController.swift */,
 				39C3D4A52082A98400C2FC12 /* AddItemViewController.swift */,
 				39C3D4A72082A99600C2FC12 /* ItemDetailViewController.swift */,

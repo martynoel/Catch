@@ -39,34 +39,6 @@ class Item: NSObject, NSCoding {
         super.init()
     }
     
-    convenience init(random: Bool = false) {
-        
-        let image = UIImage(named: "catchLogo")
-        
-        if random {
-            
-            let colors = ["White", "Pink", "Red", "Orange", "Yellow", "Green", "Aqua", "Blue", "Navy", "Light Purple", "Violet", "Gray", "Black", "Patterned"]
-            let brands = ["Abercrombie", "Lilly Pulitzer", "H&M"]
-            
-            // Selects random color from colors array
-            var randomIndex = arc4random_uniform(UInt32(colors.count))
-            let randomColor = colors[Int(randomIndex)]
-            
-            // Selects random brand from brands array
-            randomIndex = arc4random_uniform(UInt32(brands.count))
-            let randomBrand = brands[Int(randomIndex)]
-            
-            // Creates random dress name from color and brand
-            let randomName = "\(randomColor) \(randomBrand) dress"
-            
-            self.init(called: randomName, with: image!)
-        }
-            
-        else {
-            self.init(called: "", with: image!)
-        }
-    }
-    
     // MARK: Methods
     
     func updateDateLastWorn() {

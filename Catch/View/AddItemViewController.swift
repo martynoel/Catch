@@ -432,6 +432,7 @@ class AddItemViewController: UIViewController, UITextFieldDelegate, UINavigation
     }
     
     func setUpDateInfo() {
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .short
