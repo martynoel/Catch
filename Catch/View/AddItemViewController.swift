@@ -146,9 +146,10 @@ class AddItemViewController: UIViewController, UITextFieldDelegate, UINavigation
     
     // MARK: View lifecycle methods
     
-    override func viewDidLoad() {
+    override func loadView() {
         
-        super.viewDidLoad()
+//        super.viewDidLoad()
+        super.loadView()
         
         view.backgroundColor = .white
         

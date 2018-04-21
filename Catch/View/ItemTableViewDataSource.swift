@@ -13,12 +13,16 @@ class ItemTableViewDataSource: NSObject {
     // MARK: Properties
     
     let itemModelController: ItemModelController
+    let tableViewController: UITableViewController
+    let navigationController = UINavigationController()
     
     // MARK: Initialization
     
-    init(tableView: UITableView, itemModelController: ItemModelController) {
+    init(tableView: UITableView, itemModelController: ItemModelController, tableViewController: UITableViewController) {
         
         self.itemModelController = itemModelController
+        
+        self.tableViewController = tableViewController // needed to present delete alert controller
         
         super.init()
         
@@ -56,9 +60,26 @@ extension ItemTableViewDataSource: UITableViewDataSource {
         
         // If table view asks to commit a delete command, find and remove the item from the data store, and remove the row from the table with an animation
         if editingStyle == .delete {
-            let item = itemModelController.allItems[indexPath.row]
-            itemModelController.removeItem(item)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+            
+            // Add alert before deleting!
+            let deleteAlert = UIAlertController(title: "Delete Item?", message: "Are you sure you want to delete this item? You'll have to add it again if you want it back.", preferredStyle: .alert)
+            let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
+                
+                // Deleting the item
+                let item = self.itemModelController.allItems[indexPath.row]
+                self.itemModelController.removeItem(item)
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+            }
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .default) { (clickCancel) in
+                
+                self.navigationController.popViewController(animated: true)
+            }
+            
+            deleteAlert.addAction(deleteAction)
+            deleteAlert.addAction(cancelAction)
+            
+            tableViewController.present(deleteAlert, animated: true, completion: nil)
         }
     }
     

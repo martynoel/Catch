@@ -28,7 +28,7 @@ class ItemTableViewController: UITableViewController {
         // Set up data source and delegate in separate classes
         if let itemModelController = itemModelController {
             
-            itemTableViewDataSource = ItemTableViewDataSource(tableView: tableView, itemModelController: itemModelController)
+            itemTableViewDataSource = ItemTableViewDataSource(tableView: tableView, itemModelController: itemModelController, tableViewController: self)
             itemTableViewDelegate = ItemTableViewDelegate(tableView: tableView, itemModelController: itemModelController, navigationController: self.navigationController!)
         }
     }
