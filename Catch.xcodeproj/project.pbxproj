@@ -113,8 +113,8 @@
 			children = (
 				39C3D48A2082A5EC00C2FC12 /* AppDelegate.swift */,
 				395C690220855E73000784BB /* Model */,
-				395C690420855E92000784BB /* View */,
 				3964AEAC208C92CC00707768 /* Model Controller */,
+				395C690420855E92000784BB /* View */,
 				3964AEAD208C92EE00707768 /* View Controller */,
 				39C3D4942082A5EE00C2FC12 /* Assets.xcassets */,
 				39C3D4962082A5EE00C2FC12 /* LaunchScreen.storyboard */,

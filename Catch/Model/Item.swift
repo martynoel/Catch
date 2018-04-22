@@ -39,19 +39,6 @@ class Item: NSObject, NSCoding {
         super.init()
     }
     
-    // MARK: Methods
-    
-    func updateDateLastWorn() {
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .short
-        dateFormatter.locale = Locale(identifier: "en_US")
-        
-        self.dateLastWorn = Date()
-        self.dateLastWornString = dateFormatter.string(from: dateLastWorn)
-    }
-    
     // MARK: NSCoding methods
     
     func encode(with aCoder: NSCoder) {
