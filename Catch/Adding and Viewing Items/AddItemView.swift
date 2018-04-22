@@ -1,5 +1,5 @@
 //
-//  AddItemDetailView.swift
+//  AddItemView.swift
 //  Catch
 //
 //  Created by Mimi Chenyao on 4/22/18.
